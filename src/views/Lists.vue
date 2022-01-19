@@ -1,6 +1,6 @@
 <script>
 import {onMounted, reactive} from "vue";
-import Progress from './Progress.vue'
+import Progress from '../components/Progress.vue'
 
 export default {
   components: {
@@ -28,7 +28,7 @@ export default {
 
 <template>
   <div class="hosts">
-    <a :href="'/' + item._id" v-for="item in lists" :id="item._id" class="host">
+    <a :href="'/' + item._id" v-for="item in lists" :key="item._id" class="host">
       <div class="tile text-sm text-gray-500">
         <div class="tile-icon">
           <svg class="h-4 w-4" :class="[item.is_online ? 'text-green-500' : 'text-red-500']" viewBox="0 0 20 20" fill="currentColor">

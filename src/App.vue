@@ -1,7 +1,3 @@
-<script setup>
-import Lists from './components/Lists.vue'
-</script>
-
 <template>
   <div class="main_page">
     <div class="header">
@@ -10,7 +6,7 @@ import Lists from './components/Lists.vue'
       </div>
     </div>
     <div class="container mx-auto py-8">
-      <Lists />
+      <router-view/>
     </div>
   </div>
 </template>

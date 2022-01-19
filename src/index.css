@@ -10,7 +10,7 @@
 }
 
 .hosts {
-    @apply grid grid-cols-4 gap-4;
+    @apply grid lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-8;
 }
 
 .host {
