@@ -1,3 +1,63 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+.main_page {
+    @apply bg-gray-800 min-h-screen;
+}
+
+.header {
+    @apply bg-white;
+}
+
+.hosts {
+    @apply grid grid-cols-4 gap-4;
+}
+
+.host {
+    @apply bg-gray-100 px-4 py-2 rounded-lg;
+}
+
+.host-title {
+    @apply text-xl py-2 font-bold;
+}
+
+.host-network {
+    @apply text-xs text-gray-500 border-b border-slate-200 mb-4 pb-4;
+}
+
+.host-network span {
+    @apply pr-2;
+}
+
+.host-network svg {
+    vertical-align: bottom;
+}
+
+.tile {
+    @apply flex self-start content-between;
+}
+
+.tile-icon {
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+}
+
+.tile-icon-progress {
+    width: 3rem;
+}
+
+.tile-content {
+    @apply flex-auto text-right
+}
+
+.tile .tile-content:not(:first-child) {
+    @apply px-2;
+}
+
+.progress {
+    @apply w-full bg-gray-200 rounded-full h-2.5 mt-2 dark:bg-gray-700;
+}
+
+.progress-bar {
+    @apply h-2.5 rounded-full;
+}
