@@ -16,7 +16,7 @@ export default {
 
     onMounted(async () => {
       const data = await fetch(
-          'https://nodequery-atlinbing.cloud.okteto.net/lists'
+          'https://nq-atlinbing.cloud.okteto.net/hosts'
       ).then(rsp => rsp.json())
       console.log(data)
       state.lists = data.data
@@ -35,35 +35,35 @@ export default {
             <path fill-rule="evenodd" :d="svgOnlinePath" clip-rule="evenodd"/>
           </svg>
         </div>
-        <div class="tile-content">{{ item.date }}</div>
+        <div class="tile-content">{{ item.m_date }}</div>
       </div>
       <h5 class="host-title">{{ item.name }}</h5>
       <div class="host-network">
         <svg class="h-4 w-4 inline" viewBox="0 0 20 20" fill="currentColor">
           <path fill-rule="evenodd" :d="svgTxPath" clip-rule="evenodd"/>
         </svg>
-        <span>{{ item.tx_gap }}</span>
+        <span>{{ item.tx }}</span>
         <svg class="h-4 w-4 inline" viewBox="0 0 20 20" fill="currentColor">
           <path fill-rule="evenodd" :d="svgRxPath" clip-rule="evenodd"/>
         </svg>
-        <span>{{ item.rx_gap }}</span>
+        <span>{{ item.rx }}</span>
       </div>
       <div class="tile py-1">
         <div class="tile-icon tile-icon-progress">Load</div>
         <div class="tile-content">
-          <Progress :progressValue="item.load"/>
+          <Progress :progressValue="item.load_gap"/>
         </div>
       </div>
       <div class="tile py-1">
         <div class="tile-icon tile-icon-progress">Ram</div>
         <div class="tile-content">
-          <Progress :progressValue="item.ram"/>
+          <Progress :progressValue="item.ram_gap"/>
         </div>
       </div>
       <div class="tile py-1">
         <div class="tile-icon tile-icon-progress">Disk</div>
         <div class="tile-content">
-          <Progress :progressValue="item.disk"/>
+          <Progress :progressValue="item.disk_gap"/>
         </div>
       </div>
     </a>
