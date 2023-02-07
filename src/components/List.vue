@@ -1,12 +1,16 @@
 <script>
-import {onMounted, reactive} from "vue";
+import {onMounted, reactive, ref, watch, watchEffect} from "vue";
 import Progress from '../components/Progress.vue'
+import {useWebSocket} from '@vueuse/core'
 
 export default {
   components: {
     Progress
   },
   setup() {
+    const ws_url = import.meta.env.VITE_WS_URL
+    const {status, data, send, open, close} = useWebSocket(ws_url, {autoReconnect: true, autoClose: false})
+
     const state = reactive({
       lists: [],
       svgOnlinePath: 'M10 18a8 8 0 100-16 8 8 0 000 16zM8 7a1 1 0 00-1 1v4a1 1 0 001 1h4a1 1 0 001-1V8a1 1 0 00-1-1H8z',
@@ -14,12 +18,14 @@ export default {
       svgRxPath: 'M14.707 10.293a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L9 12.586V5a1 1 0 012 0v7.586l2.293-2.293a1 1 0 011.414 0z'
     })
 
-    onMounted(async () => {
-      const data = await fetch(
-          'https://nodequery-atcooc123.cloud.okteto.net/api/agent.list'
-      ).then(rsp => rsp.json())
-      console.log(data)
-      state.lists = data.data
+    watchEffect(() => {
+      console.log(status)
+      state.lists = JSON.parse(data.value)
+    })
+
+    onMounted(() => {
+      console.log(import.meta.env.VITE_WS_URL)
+      state.lists = []
     })
     return state
   }
@@ -31,7 +37,8 @@ export default {
     <a :href="'/' + item._id" v-for="item in lists" :key="item._id" class="host">
       <div class="tile text-sm text-gray-500">
         <div class="tile-icon">
-          <svg class="h-4 w-4" :class="[item.is_online ? 'text-green-500' : 'text-red-500']" viewBox="0 0 20 20" fill="currentColor">
+          <svg class="h-4 w-4" :class="[item.is_online ? 'text-green-500' : 'text-red-500']" viewBox="0 0 20 20"
+               fill="currentColor">
             <path fill-rule="evenodd" :d="svgOnlinePath" clip-rule="evenodd"/>
           </svg>
         </div>
