@@ -9,7 +9,7 @@ export default {
   },
   setup() {
     const ws_url = import.meta.env.VITE_WS_URL
-    const {status, data, send, open, close} = useWebSocket(ws_url, {autoReconnect: true, autoClose: false})
+    const {status, data, send, open, close} = useWebSocket(ws_url, {autoReconnect: true})
 
     const state = reactive({
       lists: [],
@@ -19,7 +19,8 @@ export default {
     })
 
     watchEffect(() => {
-      console.log(status)
+      send('pong')
+      console.log(status.value)
       state.lists = JSON.parse(data.value)
     })
 
