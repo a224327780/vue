@@ -25,7 +25,6 @@ export default {
     })
 
     onMounted(() => {
-      console.log(import.meta.env.VITE_WS_URL)
       state.lists = []
     })
     return state
