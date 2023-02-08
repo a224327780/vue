@@ -19,7 +19,7 @@ export default {
     })
 
     watchEffect(() => {
-      send('pong')
+      send('ping')
       console.log(status.value)
       state.lists = JSON.parse(data.value)
     })
