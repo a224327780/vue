@@ -1,5 +1,4 @@
 <script>
-
 import {reactive, ref} from "vue";
 
 export default {
