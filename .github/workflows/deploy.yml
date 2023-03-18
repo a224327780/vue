@@ -3,8 +3,8 @@ name: TuChuang
 on:
   push:
     branches: [ tuchuang ]
-    paths-ignore:
-      - '.github/workflows/deploy.yml'
+#    paths-ignore:
+#      - '.github/workflows/deploy.yml'
 
 jobs:
   deploy:
@@ -16,5 +16,5 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          preCommands:  npm run build && wrangler pages project create ${GITHUB_REF_NAME}  --production-branch ${GITHUB_REF_NAME} || true
+          preCommands:  npm install && npm run build && wrangler pages project create ${GITHUB_REF_NAME}  --production-branch ${GITHUB_REF_NAME} || true
           command: pages publish dist --project-name=${GITHUB_REF_NAME}
