@@ -34,45 +34,43 @@ export default {
 
 <template>
   <div class="hosts">
-    <a :href="'/' + item._id" v-for="item in lists" :key="item._id" class="host">
-      <div class="tile text-sm text-gray-500">
-        <div class="tile-icon">
-          <svg class="h-4 w-4" :class="[item.is_online ? 'text-green-500' : 'text-red-500']" viewBox="0 0 20 20"
-               fill="currentColor">
-            <path fill-rule="evenodd" :d="svgOnlinePath" clip-rule="evenodd"/>
-          </svg>
-        </div>
-        <div class="tile-content">{{ item.date }}</div>
-      </div>
-      <h5 class="host-title">{{ item.name }}</h5>
-      <div class="host-network">
-        <svg class="h-4 w-4 inline" viewBox="0 0 20 20" fill="currentColor">
-          <path fill-rule="evenodd" :d="svgTxPath" clip-rule="evenodd"/>
+    <div class="tile text-sm text-gray-500">
+      <div class="tile-icon">
+        <svg class="h-4 w-4" :class="[item.is_online ? 'text-green-500' : 'text-red-500']" viewBox="0 0 20 20"
+             fill="currentColor">
+          <path fill-rule="evenodd" :d="svgOnlinePath" clip-rule="evenodd"/>
         </svg>
-        <span>{{ item.tx_gap }}</span>
-        <svg class="h-4 w-4 inline" viewBox="0 0 20 20" fill="currentColor">
-          <path fill-rule="evenodd" :d="svgRxPath" clip-rule="evenodd"/>
-        </svg>
-        <span>{{ item.rx_gap }}</span>
       </div>
-      <div class="tile py-1">
-        <div class="tile-icon tile-icon-progress">Load</div>
-        <div class="tile-content">
-          <Progress :progressValue="item.load"/>
-        </div>
+      <div class="tile-content">{{ item.date }}</div>
+    </div>
+    <h5 class="host-title">{{ item.name }}</h5>
+    <div class="host-network">
+      <svg class="h-4 w-4 inline" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" :d="svgTxPath" clip-rule="evenodd"/>
+      </svg>
+      <span>{{ item.tx_gap }}</span>
+      <svg class="h-4 w-4 inline" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" :d="svgRxPath" clip-rule="evenodd"/>
+      </svg>
+      <span>{{ item.rx_gap }}</span>
+    </div>
+    <div class="tile py-1">
+      <div class="tile-icon tile-icon-progress">Load</div>
+      <div class="tile-content">
+        <Progress :progressValue="item.load"/>
       </div>
-      <div class="tile py-1">
-        <div class="tile-icon tile-icon-progress">Ram</div>
-        <div class="tile-content">
-          <Progress :progressValue="item.ram"/>
-        </div>
+    </div>
+    <div class="tile py-1">
+      <div class="tile-icon tile-icon-progress">Ram</div>
+      <div class="tile-content">
+        <Progress :progressValue="item.ram"/>
       </div>
-      <div class="tile py-1">
-        <div class="tile-icon tile-icon-progress">Disk</div>
-        <div class="tile-content">
-          <Progress :progressValue="item.disk"/>
-        </div>
+    </div>
+    <div class="tile py-1">
+      <div class="tile-icon tile-icon-progress">Disk</div>
+      <div class="tile-content">
+        <Progress :progressValue="item.disk"/>
       </div>
-    </a>
+    </div>
   </div>
 </template>
