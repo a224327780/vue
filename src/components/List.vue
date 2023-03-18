@@ -8,7 +8,10 @@ export default {
     Progress
   },
   setup() {
-    const ws_url = import.meta.env.VITE_WS_URL
+    let ws_url = import.meta.env.VITE_WS_URL
+    if (!ws_url) {
+      ws_url = 'wss://nodequery-atcooc123.cloud.okteto.net/api/agent.list'
+    }
     const {status, data, send, open, close} = useWebSocket(ws_url, {autoReconnect: true})
 
     const state = reactive({
