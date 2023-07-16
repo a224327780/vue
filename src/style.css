@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    @apply bg-gray-100 h-full;
+}
+
+.main {
+    @apply h-full ;
+}
+
+.container {
+    @apply py-4 z-10 relative mx-auto w-2/4
+}
+
+.content {
+    @apply py-4 px-6 mt-4 bg-white rounded  break-words
+}
+
+.header {
+    @apply py-6
+}
+
+.header input {
+    @apply w-full text-center focus:outline-none px-2 py-3 bg-black/5 dark:bg-white/5 rounded rounded
+}
